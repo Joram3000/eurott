@@ -1,0 +1,23 @@
+/Users/joram/Documents/Arduino/eurott/eurott/build/libraries/FastLED/third_party/espressif/led_strip/src/led_strip_rmt_encoder.c.o: \
+ /Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_rmt_encoder.c \
+ /Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/enabled.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/dio_qspi/include/sdkconfig.h \
+ /Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/esp_version.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_common/include/esp_idf_version.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_common/include/esp_check.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_common/include/esp_err.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_common/include/esp_compiler.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/log/include/esp_log.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_rom/include/esp_rom_sys.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/reset_reasons.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/log/include/esp_log_internal.h \
+ /Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_rmt_encoder.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_driver_rmt/include/driver/rmt_encoder.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/hal/include/hal/rmt_types.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/clk_tree_defs.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/soc_caps.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_driver_rmt/include/driver/rmt_types.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/hal/include/hal/gpio_types.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/gpio_num.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_common/include/esp_bit_defs.h \
+ /Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_types.h

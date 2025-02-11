@@ -1,0 +1,467 @@
+[
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32"
+  },
+  {
+    "Sourcefile": null,
+    "Include": "",
+    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/adafruit_feather_esp32_v2"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "AS5600.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/AS5600"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "Wire.h",
+    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/libraries/Wire/src"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "FastLED.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/FastLED/src"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "Adafruit_GFX.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "Adafruit_I2CDevice.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "SPI.h",
+    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/libraries/SPI/src"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "Adafruit_SSD1306.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/Adafruit_SSD1306"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "AD9833.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/AD9833"
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/AS5600/AS5600.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/libraries/Wire/src/Wire.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/FastLED.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/bitswap.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/cled_controller.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/colorpalettes.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/colorutils.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/crgb.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/five_bit_hd_gamma.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/allocator.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/bytestreammemory.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/engine_events.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/file_system.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/json.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/rectangular_draw_buffer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/ref.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/screenmap.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/str.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/stub_main.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/xmap.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fl/xymap.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/2d/bilinear_expansion.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/2d/noisepalette.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/2d/scale_up.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/frame.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/fx_engine.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/time.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/video/frame_interpolator.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/video/frame_tracker.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/video/pixel_stream.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/video/video_impl.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/fx/video.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/hsv2rgb.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/lib8tion.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/noise.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/arm/k20/clockless_objectfled.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/avr/avr_millis_timer_source.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/clockless_i2s_esp32s3.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/rmt_4/idf4_rmt.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/rmt_4/idf4_rmt_impl.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/rmt_5/idf5_rmt.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/rmt_5/strip_rmt.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/esp/32/spi_ws2812/strip_spi.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/stub/led_sysdefs_stub.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/active_strip_data.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/compiler/Arduino.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/engine_listener.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/fs_wasm.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/js.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/timer.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/button.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/checkbox.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/description.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/slider.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/title.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/ui_internal.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/ui_manager.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms/wasm/ui/ui_number_field.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/platforms.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/power_mgt.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/rgbw.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/sensors/digital_pin.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/sensors/pir.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/simplex.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_api.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_rmt_dev.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_rmt_encoder.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/espressif/led_strip/src/led_strip_spi_dev.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/third_party/object_fled/src/OjectFLED.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/transpose8x1_noinline.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/FastLED/src/wiring.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library/Adafruit_GFX.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library/Adafruit_SPITFT.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library/glcdfont.c",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_BusIO_Register.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_GenericDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_I2CDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_SPIDevice.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/libraries/SPI/src/SPI.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_SSD1306/Adafruit_SSD1306.cpp",
+    "Include": "",
+    "Includepath": null
+  },
+  {
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/AD9833/AD9833.cpp",
+    "Include": "",
+    "Includepath": null
+  }
+]
