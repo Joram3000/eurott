@@ -9,8 +9,8 @@
 #error ESP32 only example, please select appropriate board
 #endif
 
-// SPI setup
-SPIClass *myspi = new SPIClass(VSPI);
+// // SPI setup
+// SPIClass *myspi = new SPIClass(VSPI);
 
 // MCP4728 setup
 Adafruit_MCP4728 mcp;
@@ -86,8 +86,8 @@ void setup()
   pinMode(PWM_OUT2, OUTPUT);
   pinMode(PWM_OUT3, OUTPUT);
 
-  // Initialize SPI
-  myspi->begin();
+  // // Initialize SPI
+  // myspi->begin();
 
   // Initialize MCP4728
   if (!mcp.begin())
