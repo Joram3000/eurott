@@ -1,14 +1,14 @@
 #line 1 "/Users/joram/Documents/Arduino/eurott/eurott/.vscode/arduino.json"
 {
-  "port": "/dev/cu.JBLCharge4",
-  "configuration": "UploadSpeed=921600,CPUFreq=240,FlashFreq=80,FlashSize=8M,PartitionScheme=default_8MB,DebugLevel=none,PSRAM=enabled,LoopCore=1,EventsCore=1,EraseFlash=none,ZigbeeMode=default",
+  "port": "/dev/cu.usbserial-0001",
+  "configuration": "UploadSpeed=921600,FlashFreq=80,DebugLevel=none,EraseFlash=none",
   "output": "build",
-  "board": "esp32:esp32:adafruit_feather_esp32_v2",
-  "programmer": "",
+  "board": "esp32:esp32:esp32doit-devkit-v1",
+  "programmer": "Esptool",
   "useProgrammer": false,
   "configurationRequired": true,
   "monitorPortSettings": {
-    "port": "/dev/cu.JBLCharge4",
+    "port": "/dev/tty.usbserial-0001",
     "baudRate": 115200,
     "lineEnding": "\r\n",
     "dataBits": 8,

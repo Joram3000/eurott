@@ -1,22 +1,21 @@
 #include <Arduino.h>
 #line 1 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
-#include "AS5600.h"
-#include <FastLED.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <AD9833.h>
+#include "AS5600.h"           // MAGNETIC ENCODER
+#include <FastLED.h>          // LED CONTROLLER
+#include <Wire.h>             // I2C
+#include <Adafruit_GFX.h>     // OLED DISPLAY
+#include <Adafruit_SSD1306.h> // OLED DISPLAY
+#include <Adafruit_MCP4728.h> // DAC
 
-#ifndef ESP32
-#error ESP32 only example, please select appropriate board
-#endif
+// MCP4728 setup
+Adafruit_MCP4728 mcp;
 
-//  HSPI uses default   SCLK=14, MISO=12, MOSI=13, SELECT=15
-//  VSPI uses default   SCLK=18, MISO=19, MOSI=23, SELECT=5
-SPIClass *myspi = new SPIClass(VSPI);
-AD9833 AD(5, myspi);
+// AS5600 setup
+AS5600 as5600;
+#define ANALOG_PIN 34 // Analog pin for AS5600
 
-#define LED_PIN 13
+// LED setup
+#define LED_PIN 13 // LED data pin
 #define NUM_LEDS_1 60
 #define NUM_LEDS_2 48
 #define NUM_LEDS_3 40
@@ -26,86 +25,80 @@ AD9833 AD(5, myspi);
 #define COLOR_ORDER GRB
 CRGB leds[TOTAL_LEDS];
 
-#define PWM_OUT 25
-#define PWM_OUT2 26
-#define PWM_OUT3 27
-#define ANALOG_PIN 34
-
+// OLED display setup
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-AS5600 as5600;
-
+// Variables for angle and velocity
 float currentAngle = 0;
 float previousAngle = 0;
 float angularVelocity = 0;
-
 const float movementThreshold = 0.005;
-int analogValue;
-const int pwmValues[4] = {0, 8, 32, 128}; // Adjusted PWM values for ESP32
 
+// Variables for analog and PWM values
+const int pwmValues[4] = {0, 8, 32, 128}; // Adjusted PWM values for ESP32
 const uint8_t hues[4] = {16, 192, 48, 96};
 const int frontSize = 1;
 const int maxTailLength = 8;
 
-#line 52 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 45 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup();
-#line 89 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 82 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 137 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 117 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 145 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 125 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 189 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 164 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
-#line 52 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 45 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
 {
   Serial.begin(115200);
   Wire.begin();
 
+  // Initialize display
   if (!display.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS))
   {
     Serial.println(F("SSD1306 allocation failed"));
   }
-
   display.clearDisplay();
-  display.setTextSize(3);
+  display.setTextSize(2);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
   display.println(F("PRRRRRRA!!!"));
   display.display();
   delay(600);
 
+  // Initialize AS5600
   as5600.begin(4);
   as5600.setDirection(AS5600_CLOCK_WISE);
 
+  // Initialize LEDs
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, TOTAL_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
 
-  pinMode(PWM_OUT, OUTPUT);
-  pinMode(PWM_OUT2, OUTPUT);
-  pinMode(PWM_OUT3, OUTPUT);
-
-  myspi->begin();
-
-  AD.begin();
-  AD.setFrequency(200, 0);
-
-  AD.setWave(AD9833_SQUARE1);
-  Serial.println(AD.getWave());
+  // Initialize MCP4728
+  if (!mcp.begin())
+  {
+    Serial.println("Failed to find MCP4728 chip");
+    while (1)
+    {
+      delay(10);
+    }
+  }
 }
 
 void loop()
 {
-  static uint8_t displayUpdateCounter = 0;
   static uint32_t lastTime = 0;
   uint32_t currentTime = micros();
   float deltaTime = (currentTime - lastTime) * 1e-6;
   lastTime = currentTime;
+
   float rawAngle = as5600.rawAngle();
   float targetAngleRad = (rawAngle / 4096.0) * TWO_PI;
   float angleDiff = targetAngleRad - currentAngle;
@@ -114,7 +107,6 @@ void loop()
   {
     angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
   }
-
   if (abs(angleDiff) > movementThreshold)
   {
     previousAngle = currentAngle;
@@ -129,18 +121,6 @@ void loop()
   {
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
-
-  int pwmValue = map(constrain(abs(angularVelocity), 0, 96), 0, 100, 0, 255);
-  dacWrite(PWM_OUT, pwmValue);
-  int segment = (int)(currentAngle / (TWO_PI / 4)); // Determine the segment (0-3)
-  dacWrite(PWM_OUT2, pwmValues[segment]);
-
-  analogValue = analogRead(ANALOG_PIN);
-  int pwmValue2 = map(analogValue, 0, 4095, 0, 64);
-  analogWrite(PWM_OUT3, pwmValue2);
-
-  float mappedFreq = map(constrain(abs(angularVelocity), 0, 20), 0, 20, 0, 600);
-  AD.setFrequency(mappedFreq, 0);
 
   updateLEDs();
   FastLED.show();
@@ -172,25 +152,20 @@ void updateRing(int startIndex, int numLeds)
   {
     int tailLength = min((int)(abs(angularVelocity) * 5), maxTailLength);
     float angleDiff = currentAngle - previousAngle;
-
     if (abs(angleDiff) > PI)
     {
       angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
     }
-
     for (int i = 1; i <= tailLength; i++)
     {
       float t = (float)i / tailLength;
       float tailAngle = currentAngle - angleDiff * t * tailLength;
-
       if (tailAngle < 0)
         tailAngle += TWO_PI;
       if (tailAngle >= TWO_PI)
         tailAngle -= TWO_PI;
-
       int tailLed = (int)((tailAngle / TWO_PI) * numLeds) % numLeds;
       uint8_t tailBrightness = 180 * (tailLength - i + 1) / tailLength; // More aggressive fade
-
       if (tailLed != currentLed)
       {
         leds[startIndex + tailLed] = CHSV(hues[segment], 255, tailBrightness);
@@ -223,9 +198,6 @@ void updateDisplay()
 
   display.print(F("PWM2: "));
   display.println(pwmValues[(int)(currentAngle / (TWO_PI / 4))]);
-
-  display.print(F("AnlgIN: "));
-  display.println(analogValue);
 
   display.display();
 }

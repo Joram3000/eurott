@@ -81,7 +81,7 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/hal/include/hal/uart_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/clk_tree_defs.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-gpio.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/adafruit_feather_esp32_v2/pins_arduino.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/doitESP32devkitV1/pins_arduino.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_driver_gpio/include/driver/gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_rom/include/esp_rom_gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/gpio_pins.h \
@@ -102,12 +102,4 @@
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-bt.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-psram.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-rgb-led.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-cpu.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/efuse_reg.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/efuse_defs.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_psram/include/esp_psram.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_psram/include/esp_private/esp_psram_extram.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_rom/include/esp32/rom/cache.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_hw_support/include/dport_access.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/dport_access.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_system/include/esp_ipc_isr.h
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-cpu.h

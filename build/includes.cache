@@ -7,7 +7,7 @@
   {
     "Sourcefile": null,
     "Include": "",
-    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/adafruit_feather_esp32_v2"
+    "Includepath": "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/doitESP32devkitV1"
   },
   {
     "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
@@ -46,8 +46,8 @@
   },
   {
     "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
-    "Include": "AD9833.h",
-    "Includepath": "/Users/joram/Documents/Arduino/libraries/AD9833"
+    "Include": "Adafruit_MCP4728.h",
+    "Includepath": "/Users/joram/Documents/Arduino/libraries/Adafruit_MCP4728"
   },
   {
     "Sourcefile": "/Users/joram/Documents/Arduino/eurott/eurott/build/sketch/eurott.ino.cpp",
@@ -460,7 +460,7 @@
     "Includepath": null
   },
   {
-    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/AD9833/AD9833.cpp",
+    "Sourcefile": "/Users/joram/Documents/Arduino/libraries/Adafruit_MCP4728/Adafruit_MCP4728.cpp",
     "Include": "",
     "Includepath": null
   }

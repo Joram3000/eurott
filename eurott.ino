@@ -37,7 +37,6 @@ float angularVelocity = 0;
 const float movementThreshold = 0.005;
 
 // Variables for analog and PWM values
-int analogValue;
 const int pwmValues[4] = {0, 8, 32, 128}; // Adjusted PWM values for ESP32
 const uint8_t hues[4] = {16, 192, 48, 96};
 const int frontSize = 1;

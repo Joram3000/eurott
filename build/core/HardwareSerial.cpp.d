@@ -1,7 +1,6 @@
 /Users/joram/Documents/Arduino/eurott/eurott/build/core/HardwareSerial.cpp.o: \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/HardwareSerial.cpp \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/adafruit_feather_esp32_v2/pins_arduino.h \
- /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/soc_caps.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/doitESP32devkitV1/pins_arduino.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/io_pin_remap.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/Arduino.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp_arduino_version.h \
@@ -30,6 +29,7 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/xtensa/include/xtensa/xtruntime.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_hw_support/include/spinlock.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_hw_support/include/esp_cpu.h \
+ /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/soc_caps.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/xtensa/include/xtensa_api.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/xtensa/include/xt_utils.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/xtensa/esp32/include/xtensa/config/extreg.h \

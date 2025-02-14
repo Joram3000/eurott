@@ -89,7 +89,7 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/hal/include/hal/uart_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/clk_tree_defs.h \
  /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/cores/esp32/esp32-hal-gpio.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/adafruit_feather_esp32_v2/pins_arduino.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.1/variants/doitESP32devkitV1/pins_arduino.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_driver_gpio/include/driver/gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/esp_rom/include/esp_rom_gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-cfea4f7c-v1/esp32/include/soc/esp32/include/soc/gpio_pins.h \
