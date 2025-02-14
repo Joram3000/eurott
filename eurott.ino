@@ -30,12 +30,14 @@ CRGB leds[TOTAL_LEDS];
 #define SCREEN_ADDRESS 0x3C
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+// Constants
+const float MOVEMENT_THRESHOLD = 0.004;
+
 // Variables for angle and velocity
 float currentAngle = 0;
 float previousAngle = 0;
 float angularVelocity = 0;
 float minMaxVelocity[2] = {0, 0};
-const float movementThreshold = 0.005;
 
 // Variables for analog and PWM values
 int segmentIndex = 0;
@@ -96,7 +98,7 @@ void loop()
   {
     angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
   }
-  if (abs(angleDiff) > movementThreshold)
+  if (abs(angleDiff) > MOVEMENT_THRESHOLD)
   {
     previousAngle = currentAngle;
     currentAngle += angleDiff * 0.6; // closer to 1 is more direct response
@@ -131,10 +133,6 @@ void loop()
   {
     minMaxVelocity[0] = angularVelocity;
   }
-
-  // Serial.print("RPM: ");
-  Serial.print("\t");
-  Serial.println(rpm, 2);
 
   updateLEDs();
   FastLED.show();
@@ -210,7 +208,15 @@ void updateDisplay()
   display.print(F("RPM: "));
   display.println((angularVelocity * 60) / TWO_PI, 2);
   display.print(F("SPR: "));
-  display.println(1 / (angularVelocity / TWO_PI), 2);
+  float spr = 1 / (angularVelocity / TWO_PI);
+  if (spr >= 10 || spr <= -10)
+  {
+    display.print(F("INF"));
+  }
+  else
+  {
+    display.println(spr, 2);
+  }
 
   display.display();
 }
