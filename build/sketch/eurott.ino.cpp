@@ -36,25 +36,27 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 float currentAngle = 0;
 float previousAngle = 0;
 float angularVelocity = 0;
+float minMaxVelocity[2] = {0, 0};
 const float movementThreshold = 0.005;
 
 // Variables for analog and PWM values
-const int pwmValues[4] = {0, 8, 32, 128}; // Adjusted PWM values for ESP32
+int segmentIndex = 0;
+const int segments[4] = {1000, 2000, 3000, 4000}; // Adjusted PWM values for ESP32
 const uint8_t hues[4] = {16, 192, 48, 96};
 const int frontSize = 1;
 const int maxTailLength = 8;
 
-#line 45 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 47 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup();
-#line 82 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 84 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 122 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 141 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 130 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 149 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 169 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 187 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
-#line 45 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 47 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
 {
   Serial.begin(115200);
@@ -110,7 +112,7 @@ void loop()
   if (abs(angleDiff) > movementThreshold)
   {
     previousAngle = currentAngle;
-    currentAngle += angleDiff * 1; // closer to 1 is more direct response
+    currentAngle += angleDiff * 0.6; // closer to 1 is more direct response
     if (currentAngle < 0)
       currentAngle += TWO_PI;
     if (currentAngle >= TWO_PI)
@@ -119,14 +121,31 @@ void loop()
   }
   else
   {
-    angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
+    angularVelocity *= 0.5; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
-  mcp.setChannelValue(MCP4728_CHANNEL_A, rawAngle);
+  int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
+  mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
+
   mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
-  mcp.setChannelValue(MCP4728_CHANNEL_C, rawAngle);
+  segmentIndex = (int)(currentAngle / (TWO_PI / 4));
+  mcp.setChannelValue(MCP4728_CHANNEL_C, segments[segmentIndex]);
+
   mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
 
+  if (angularVelocity > minMaxVelocity[1])
+  {
+    minMaxVelocity[1] = angularVelocity;
+  }
+  if (angularVelocity < minMaxVelocity[0])
+  {
+    minMaxVelocity[0] = angularVelocity;
+  }
+
+  Serial.print("Max Velo: ");
+  Serial.println(minMaxVelocity[1], 2);
+  Serial.print("Min Velo: ");
+  Serial.println(minMaxVelocity[0], 2);
   updateLEDs();
   FastLED.show();
   updateDisplay();
@@ -143,13 +162,12 @@ void updateLEDs()
 void updateRing(int startIndex, int numLeds)
 {
   int currentLed = (int)((currentAngle / TWO_PI) * numLeds) % numLeds;
-  int segment = (int)(currentAngle / (TWO_PI / 4)); // Determine the segment (0-3)
 
   // Set front LEDs (Brighter and more saturated)
   for (int i = 0; i < frontSize; i++)
   {
     int frontLed = (currentLed - i + numLeds) % numLeds;
-    leds[startIndex + frontLed] = CHSV(hues[segment], 255, 255); // Max brightness
+    leds[startIndex + frontLed] = CHSV(hues[segmentIndex], 255, 255); // Max brightness
   }
 
   // Set tail LEDs (Dimmer, fade out more aggressively)
@@ -170,10 +188,10 @@ void updateRing(int startIndex, int numLeds)
       if (tailAngle >= TWO_PI)
         tailAngle -= TWO_PI;
       int tailLed = (int)((tailAngle / TWO_PI) * numLeds) % numLeds;
-      uint8_t tailBrightness = 180 * (tailLength - i + 1) / tailLength; // More aggressive fade
+      uint8_t tailBrightness = 180 * (tailLength - i + 1) / tailLength;
       if (tailLed != currentLed)
       {
-        leds[startIndex + tailLed] = CHSV(hues[segment], 255, tailBrightness);
+        leds[startIndex + tailLed] = CHSV(hues[segmentIndex], 255, tailBrightness);
       }
     }
   }
@@ -186,17 +204,18 @@ void updateDisplay()
   display.setTextColor(SSD1306_WHITE);
 
   display.setCursor(0, 0);
-  display.print(F("Angle: "));
-  display.println(currentAngle, 2);
-
   display.print(F("Velo: "));
   display.println(angularVelocity, 2);
+  display.print(F("Max:"));
+  display.print(minMaxVelocity[1], 1);
+  display.print(F(" Min: "));
+  display.println(minMaxVelocity[0], 1);
 
-  display.print(F("Raw Angle: "));
+  display.print(F("Raw: "));
   display.println(as5600.rawAngle());
 
   display.print(F("Seg: "));
-  display.println((int)(currentAngle / (TWO_PI / 4)));
+  display.println(segmentIndex);
 
   display.display();
 }
