@@ -121,7 +121,7 @@ void loop()
   }
   else
   {
-    angularVelocity *= 0.5; // closer to 0 more faster decay, closer to 1 slower decay
+    angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
   int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
