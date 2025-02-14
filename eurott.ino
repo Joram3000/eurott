@@ -1,22 +1,19 @@
-#include "AS5600.h"
-#include <FastLED.h>
-#include <Wire.h>
-#include <Adafruit_GFX.h>
-#include <Adafruit_SSD1306.h>
-#include <Adafruit_MCP4728.h>
-
-#ifndef ESP32
-#error ESP32 only example, please select appropriate board
-#endif
-
-// // SPI setup
-// SPIClass *myspi = new SPIClass(VSPI);
+#include "AS5600.h"           // MAGNETIC ENCODER
+#include <FastLED.h>          // LED CONTROLLER
+#include <Wire.h>             // I2C
+#include <Adafruit_GFX.h>     // OLED DISPLAY
+#include <Adafruit_SSD1306.h> // OLED DISPLAY
+#include <Adafruit_MCP4728.h> // DAC
 
 // MCP4728 setup
 Adafruit_MCP4728 mcp;
 
+// AS5600 setup
+AS5600 as5600;
+#define ANALOG_PIN 34 // Analog pin for AS5600
+
 // LED setup
-#define LED_PIN 13
+#define LED_PIN 13 // LED data pin
 #define NUM_LEDS_1 60
 #define NUM_LEDS_2 48
 #define NUM_LEDS_3 40
@@ -26,21 +23,12 @@ Adafruit_MCP4728 mcp;
 #define COLOR_ORDER GRB
 CRGB leds[TOTAL_LEDS];
 
-// PWM and Analog setup
-#define PWM_OUT 25
-#define PWM_OUT2 26
-#define PWM_OUT3 27
-#define ANALOG_PIN 34
-
 // OLED display setup
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET -1
 #define SCREEN_ADDRESS 0x3C
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-// AS5600 setup
-AS5600 as5600;
 
 // Variables for angle and velocity
 float currentAngle = 0;
@@ -66,7 +54,7 @@ void setup()
     Serial.println(F("SSD1306 allocation failed"));
   }
   display.clearDisplay();
-  display.setTextSize(3);
+  display.setTextSize(2);
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 0);
   display.println(F("PRRRRRRA!!!"));
@@ -81,14 +69,6 @@ void setup()
   FastLED.addLeds<LED_TYPE, LED_PIN, COLOR_ORDER>(leds, TOTAL_LEDS).setCorrection(TypicalLEDStrip);
   FastLED.setBrightness(BRIGHTNESS);
 
-  // Initialize PWM pins
-  pinMode(PWM_OUT, OUTPUT);
-  pinMode(PWM_OUT2, OUTPUT);
-  pinMode(PWM_OUT3, OUTPUT);
-
-  // // Initialize SPI
-  // myspi->begin();
-
   // Initialize MCP4728
   if (!mcp.begin())
   {
@@ -98,26 +78,19 @@ void setup()
       delay(10);
     }
   }
-  Serial.println("MCP4728 Found!");
-  mcp.setChannelValue(MCP4728_CHANNEL_A, 1024); // 25%
-  mcp.setChannelValue(MCP4728_CHANNEL_B, 2048); // 50%
-  mcp.setChannelValue(MCP4728_CHANNEL_C, 3072); // 75%
-  mcp.setChannelValue(MCP4728_CHANNEL_D, 4095); // 100% 3.3v
-  mcp.saveToEEPROM();
 }
 
 void loop()
 {
-  static uint8_t displayUpdateCounter = 0;
   static uint32_t lastTime = 0;
   uint32_t currentTime = micros();
   float deltaTime = (currentTime - lastTime) * 1e-6;
   lastTime = currentTime;
 
-  // Calculate angles and velocity
   float rawAngle = as5600.rawAngle();
   float targetAngleRad = (rawAngle / 4096.0) * TWO_PI;
   float angleDiff = targetAngleRad - currentAngle;
+
   if (abs(angleDiff) > PI)
   {
     angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
@@ -137,16 +110,6 @@ void loop()
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
-  // Update PWM and DAC values
-  int pwmValue = map(constrain(abs(angularVelocity), 0, 96), 0, 100, 0, 255);
-  dacWrite(PWM_OUT, pwmValue);
-  int segment = (int)(currentAngle / (TWO_PI / 4)); // Determine the segment (0-3)
-  dacWrite(PWM_OUT2, pwmValues[segment]);
-  analogValue = analogRead(ANALOG_PIN);
-  int pwmValue2 = map(analogValue, 0, 4095, 0, 64);
-  analogWrite(PWM_OUT3, pwmValue2);
-
-  // Update LEDs and display
   updateLEDs();
   FastLED.show();
   updateDisplay();
@@ -223,9 +186,6 @@ void updateDisplay()
 
   display.print(F("PWM2: "));
   display.println(pwmValues[(int)(currentAngle / (TWO_PI / 4))]);
-
-  display.print(F("AnlgIN: "));
-  display.println(analogValue);
 
   display.display();
 }
