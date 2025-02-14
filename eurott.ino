@@ -1,16 +1,16 @@
-#include "AS5600.h"           // MAGNETIC ENCODER
-#include <FastLED.h>          // LED CONTROLLER
-#include <Wire.h>             // I2C
-#include <Adafruit_GFX.h>     // OLED DISPLAY
-#include <Adafruit_SSD1306.h> // OLED DISPLAY
-#include <Adafruit_MCP4728.h> // DAC
+#include "AS5600.h"
+#include <FastLED.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <Adafruit_MCP4728.h>
 
 // MCP4728 setup
 Adafruit_MCP4728 mcp;
 
 // AS5600 setup
 AS5600 as5600;
-#define ANALOG_PIN 34 // Analog pin for AS5600
+#define ANALOG_PIN 34
 
 // LED setup
 #define LED_PIN 13 // LED data pin
@@ -41,7 +41,7 @@ float minMaxVelocity[2] = {0, 0};
 
 // Variables for analog and PWM values
 int segmentIndex = 0;
-const int segments[4] = {1000, 2000, 3000, 4000}; // Adjusted PWM values for ESP32
+const int segments[4] = {1000, 2000, 3000, 4000};
 const uint8_t hues[4] = {16, 192, 48, 96};
 const int frontSize = 1;
 const int maxTailLength = 8;
@@ -101,7 +101,7 @@ void loop()
   if (abs(angleDiff) > MOVEMENT_THRESHOLD)
   {
     previousAngle = currentAngle;
-    currentAngle += angleDiff * 0.6; // closer to 1 is more direct response
+    currentAngle += angleDiff * 0.6;
     if (currentAngle < 0)
       currentAngle += TWO_PI;
     if (currentAngle >= TWO_PI)
@@ -110,7 +110,7 @@ void loop()
   }
   else
   {
-    angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
+    angularVelocity *= 0.2;
   }
 
   // Calculate RPM
@@ -151,14 +151,14 @@ void updateRing(int startIndex, int numLeds)
 {
   int currentLed = (int)((currentAngle / TWO_PI) * numLeds) % numLeds;
 
-  // Set front LEDs (Brighter and more saturated)
+  // Set front LEDs
   for (int i = 0; i < frontSize; i++)
   {
     int frontLed = (currentLed - i + numLeds) % numLeds;
-    leds[startIndex + frontLed] = CHSV(hues[segmentIndex], 255, 255); // Max brightness
+    leds[startIndex + frontLed] = CHSV(hues[segmentIndex], 255, 255);
   }
 
-  // Set tail LEDs (Dimmer, fade out more aggressively)
+  // Set tail LEDs
   if (abs(angularVelocity) > 0.1)
   {
     int tailLength = min((int)(abs(angularVelocity) * 5), maxTailLength);
@@ -187,36 +187,47 @@ void updateRing(int startIndex, int numLeds)
 
 void updateDisplay()
 {
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
+  static float lastVelocity = 0;
+  static float lastRawAngle = 0;
+  static int lastSegmentIndex = -1;
 
-  display.setCursor(0, 0);
-  display.print(F("Velo: "));
-  display.println(angularVelocity, 2);
-  display.print(F("Max:"));
-  display.print(minMaxVelocity[1], 1);
-  display.print(F(" Min: "));
-  display.println(minMaxVelocity[0], 1);
-
-  display.print(F("Raw: "));
-  display.println(as5600.rawAngle());
-
-  display.print(F("Seg: "));
-  display.println(segmentIndex);
-
-  display.print(F("RPM: "));
-  display.println((angularVelocity * 60) / TWO_PI, 2);
-  display.print(F("SPR: "));
-  float spr = 1 / (angularVelocity / TWO_PI);
-  if (spr >= 10 || spr <= -10)
+  if (abs(angularVelocity - lastVelocity) > 0.01 || as5600.rawAngle() != lastRawAngle || segmentIndex != lastSegmentIndex)
   {
-    display.print(F("INF"));
-  }
-  else
-  {
-    display.println(spr, 2);
-  }
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
 
-  display.display();
+    display.setCursor(0, 0);
+    display.print(F("Velo: "));
+    display.println(angularVelocity, 2);
+    display.print(F("Max:"));
+    display.print(minMaxVelocity[1], 1);
+    display.print(F(" Min: "));
+    display.println(minMaxVelocity[0], 1);
+
+    display.print(F("Raw: "));
+    display.println(as5600.rawAngle());
+
+    display.print(F("Seg: "));
+    display.println(segmentIndex);
+
+    display.print(F("RPM: "));
+    display.println((angularVelocity * 60) / TWO_PI, 2);
+    display.print(F("SPR: "));
+    float spr = 1 / (angularVelocity / TWO_PI);
+    if (spr >= 10 || spr <= -10)
+    {
+      display.print(F("INF"));
+    }
+    else
+    {
+      display.println(spr, 2);
+    }
+
+    display.display();
+
+    lastVelocity = angularVelocity;
+    lastRawAngle = as5600.rawAngle();
+    lastSegmentIndex = segmentIndex;
+  }
 }
