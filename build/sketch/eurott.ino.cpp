@@ -48,11 +48,11 @@ const int maxTailLength = 8;
 void setup();
 #line 82 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 117 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 122 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 125 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 130 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 164 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 169 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
 #line 45 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
@@ -121,6 +121,11 @@ void loop()
   {
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
+
+  mcp.setChannelValue(MCP4728_CHANNEL_A, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_C, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
 
   updateLEDs();
   FastLED.show();
@@ -192,12 +197,6 @@ void updateDisplay()
 
   display.print(F("Seg: "));
   display.println((int)(currentAngle / (TWO_PI / 4)));
-
-  display.print(F("PWM1: "));
-  display.println(map(constrain(abs(angularVelocity), 0, 96), 0, 100, 0, 255));
-
-  display.print(F("PWM2: "));
-  display.println(pwmValues[(int)(currentAngle / (TWO_PI / 4))]);
 
   display.display();
 }

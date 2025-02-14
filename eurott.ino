@@ -109,6 +109,11 @@ void loop()
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
+  mcp.setChannelValue(MCP4728_CHANNEL_A, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_C, rawAngle);
+  mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
+
   updateLEDs();
   FastLED.show();
   updateDisplay();
@@ -179,12 +184,6 @@ void updateDisplay()
 
   display.print(F("Seg: "));
   display.println((int)(currentAngle / (TWO_PI / 4)));
-
-  display.print(F("PWM1: "));
-  display.println(map(constrain(abs(angularVelocity), 0, 96), 0, 100, 0, 255));
-
-  display.print(F("PWM2: "));
-  display.println(pwmValues[(int)(currentAngle / (TWO_PI / 4))]);
 
   display.display();
 }
