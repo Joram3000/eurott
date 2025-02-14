@@ -111,6 +111,9 @@ void loop()
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
+  // Calculate RPM
+  float rpm = (angularVelocity * 60) / TWO_PI;
+
   int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
 
@@ -129,10 +132,10 @@ void loop()
     minMaxVelocity[0] = angularVelocity;
   }
 
-  Serial.print("Max Velo: ");
-  Serial.println(minMaxVelocity[1], 2);
-  Serial.print("Min Velo: ");
-  Serial.println(minMaxVelocity[0], 2);
+  // Serial.print("RPM: ");
+  Serial.print("\t");
+  Serial.println(rpm, 2);
+
   updateLEDs();
   FastLED.show();
   updateDisplay();
@@ -203,6 +206,11 @@ void updateDisplay()
 
   display.print(F("Seg: "));
   display.println(segmentIndex);
+
+  display.print(F("RPM: "));
+  display.println((angularVelocity * 60) / TWO_PI, 2);
+  display.print(F("SPR: "));
+  display.println(1 / (angularVelocity / TWO_PI), 2);
 
   display.display();
 }

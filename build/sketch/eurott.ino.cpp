@@ -50,11 +50,11 @@ const int maxTailLength = 8;
 void setup();
 #line 84 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 141 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 152 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 149 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 160 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 187 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 198 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
 #line 47 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
@@ -124,6 +124,9 @@ void loop()
     angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
   }
 
+  // Calculate RPM
+  float rpm = (angularVelocity * 60) / TWO_PI;
+
   int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
 
@@ -142,10 +145,18 @@ void loop()
     minMaxVelocity[0] = angularVelocity;
   }
 
-  Serial.print("Max Velo: ");
+  // Serial.print("Max Velo: ");
   Serial.println(minMaxVelocity[1], 2);
-  Serial.print("Min Velo: ");
+  // Serial.print("Current Angle: ");
+  Serial.print("\t");
+  Serial.println(currentAngle, 2);
+  // Serial.print("Min Velo: ");
+  Serial.print("\t");
   Serial.println(minMaxVelocity[0], 2);
+  // Serial.print("RPM: ");
+  Serial.print("\t");
+  Serial.println(rpm, 2);
+
   updateLEDs();
   FastLED.show();
   updateDisplay();
