@@ -1,25 +1,25 @@
 #include <Arduino.h>
 #line 1 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
-#include "AS5600.h"           // MAGNETIC ENCODER
-#include <FastLED.h>          // LED CONTROLLER
-#include <Wire.h>             // I2C
-#include <Adafruit_GFX.h>     // OLED DISPLAY
-#include <Adafruit_SSD1306.h> // OLED DISPLAY
-#include <Adafruit_MCP4728.h> // DAC
+#include "AS5600.h"
+#include <FastLED.h>
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+#include <Adafruit_MCP4728.h>
 
 // MCP4728 setup
 Adafruit_MCP4728 mcp;
 
 // AS5600 setup
 AS5600 as5600;
-#define ANALOG_PIN 34 // Analog pin for AS5600
+#define ANALOG_PIN 34
 
 // LED setup
 #define LED_PIN 13 // LED data pin
 #define NUM_LEDS_1 60
-#define NUM_LEDS_2 48
-#define NUM_LEDS_3 40
-#define TOTAL_LEDS (NUM_LEDS_1 + NUM_LEDS_2 + NUM_LEDS_3)
+// #define NUM_LEDS_2 48
+// #define NUM_LEDS_3 40
+#define TOTAL_LEDS (NUM_LEDS_1) // + NUM_LEDS_2 + NUM_LEDS_3
 #define BRIGHTNESS 12
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
@@ -32,31 +32,33 @@ CRGB leds[TOTAL_LEDS];
 #define SCREEN_ADDRESS 0x3C
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
+// Constants
+const float MOVEMENT_THRESHOLD = 0.004;
+
 // Variables for angle and velocity
 float currentAngle = 0;
 float previousAngle = 0;
 float angularVelocity = 0;
 float minMaxVelocity[2] = {0, 0};
-const float movementThreshold = 0.005;
 
 // Variables for analog and PWM values
 int segmentIndex = 0;
-const int segments[4] = {1000, 2000, 3000, 4000}; // Adjusted PWM values for ESP32
-const uint8_t hues[4] = {16, 192, 48, 96};
+const int segments[4] = {1000, 2000, 3000, 4000};
+const uint8_t hues[4] = {20, 200, 54, 100};
 const int frontSize = 1;
 const int maxTailLength = 8;
 
-#line 47 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 49 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup();
-#line 84 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 86 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 152 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 142 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 160 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 150 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 198 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 191 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
-#line 47 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 49 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
 {
   Serial.begin(115200);
@@ -109,10 +111,10 @@ void loop()
   {
     angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
   }
-  if (abs(angleDiff) > movementThreshold)
+  if (abs(angleDiff) > MOVEMENT_THRESHOLD)
   {
     previousAngle = currentAngle;
-    currentAngle += angleDiff * 0.6; // closer to 1 is more direct response
+    currentAngle += angleDiff * 0.6;
     if (currentAngle < 0)
       currentAngle += TWO_PI;
     if (currentAngle >= TWO_PI)
@@ -121,11 +123,11 @@ void loop()
   }
   else
   {
-    angularVelocity *= 0.2; // closer to 0 more faster decay, closer to 1 slower decay
+    angularVelocity *= 0.2;
   }
 
-  // Calculate RPM
-  float rpm = (angularVelocity * 60) / TWO_PI;
+  // // Calculate RPM
+  // float rpm = (angularVelocity * 60) / TWO_PI;
 
   int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
@@ -145,18 +147,6 @@ void loop()
     minMaxVelocity[0] = angularVelocity;
   }
 
-  // Serial.print("Max Velo: ");
-  Serial.println(minMaxVelocity[1], 2);
-  // Serial.print("Current Angle: ");
-  Serial.print("\t");
-  Serial.println(currentAngle, 2);
-  // Serial.print("Min Velo: ");
-  Serial.print("\t");
-  Serial.println(minMaxVelocity[0], 2);
-  // Serial.print("RPM: ");
-  Serial.print("\t");
-  Serial.println(rpm, 2);
-
   updateLEDs();
   FastLED.show();
   updateDisplay();
@@ -166,22 +156,25 @@ void updateLEDs()
 {
   FastLED.clear();
   updateRing(0, NUM_LEDS_1);
-  updateRing(NUM_LEDS_1, NUM_LEDS_2);
-  updateRing(NUM_LEDS_1 + NUM_LEDS_2, NUM_LEDS_3);
+  // updateRing(NUM_LEDS_1, NUM_LEDS_2);
+  // updateRing(NUM_LEDS_1 + NUM_LEDS_2, NUM_LEDS_3);
 }
 
 void updateRing(int startIndex, int numLeds)
 {
   int currentLed = (int)((currentAngle / TWO_PI) * numLeds) % numLeds;
 
-  // Set front LEDs (Brighter and more saturated)
+  // Determine the hue adjustment based on the direction
+  int hueAdjustment = (angularVelocity > 0) ? 12 : -12;
+
+  // Set front LEDs
   for (int i = 0; i < frontSize; i++)
   {
     int frontLed = (currentLed - i + numLeds) % numLeds;
-    leds[startIndex + frontLed] = CHSV(hues[segmentIndex], 255, 255); // Max brightness
+    leds[startIndex + frontLed] = CHSV(hues[segmentIndex] + hueAdjustment, 255, 255);
   }
 
-  // Set tail LEDs (Dimmer, fade out more aggressively)
+  // Set tail LEDs
   if (abs(angularVelocity) > 0.1)
   {
     int tailLength = min((int)(abs(angularVelocity) * 5), maxTailLength);
@@ -202,7 +195,7 @@ void updateRing(int startIndex, int numLeds)
       uint8_t tailBrightness = 180 * (tailLength - i + 1) / tailLength;
       if (tailLed != currentLed)
       {
-        leds[startIndex + tailLed] = CHSV(hues[segmentIndex], 255, tailBrightness);
+        leds[startIndex + tailLed] = CHSV(hues[segmentIndex] + hueAdjustment, 255, tailBrightness);
       }
     }
   }
@@ -210,23 +203,47 @@ void updateRing(int startIndex, int numLeds)
 
 void updateDisplay()
 {
-  display.clearDisplay();
-  display.setTextSize(1);
-  display.setTextColor(SSD1306_WHITE);
+  static float lastVelocity = 0;
+  static float lastRawAngle = 0;
+  static int lastSegmentIndex = -1;
 
-  display.setCursor(0, 0);
-  display.print(F("Velo: "));
-  display.println(angularVelocity, 2);
-  display.print(F("Max:"));
-  display.print(minMaxVelocity[1], 1);
-  display.print(F(" Min: "));
-  display.println(minMaxVelocity[0], 1);
+  if (abs(angularVelocity - lastVelocity) > 0.01 || as5600.rawAngle() != lastRawAngle || segmentIndex != lastSegmentIndex)
+  {
+    display.clearDisplay();
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
 
-  display.print(F("Raw: "));
-  display.println(as5600.rawAngle());
+    display.setCursor(0, 0);
+    display.print(F("Velo: "));
+    display.println(angularVelocity, 2);
+    display.print(F("Max:"));
+    display.print(minMaxVelocity[1], 1);
+    display.print(F(" Min: "));
+    display.println(minMaxVelocity[0], 1);
 
-  display.print(F("Seg: "));
-  display.println(segmentIndex);
+    display.print(F("Raw: "));
+    display.println(as5600.rawAngle());
 
-  display.display();
+    display.print(F("Seg: "));
+    display.println(segmentIndex);
+
+    // display.print(F("RPM: "));
+    // display.println((angularVelocity * 60) / TWO_PI, 2);
+    // display.print(F("SPR: "));
+    // float spr = 1 / (angularVelocity / TWO_PI);
+    // if (spr >= 10 || spr <= -10)
+    // {
+    //   display.print(F("INF"));
+    // }
+    // else
+    // {
+    //   display.println(spr, 2);
+    // }
+
+    display.display();
+
+    lastVelocity = angularVelocity;
+    lastRawAngle = as5600.rawAngle();
+    lastSegmentIndex = segmentIndex;
+  }
 }

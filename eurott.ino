@@ -4,6 +4,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_MCP4728.h>
+#include <cmath>
 
 // MCP4728 setup
 Adafruit_MCP4728 mcp;
@@ -42,7 +43,7 @@ float minMaxVelocity[2] = {0, 0};
 // Variables for analog and PWM values
 int segmentIndex = 0;
 const int segments[4] = {1000, 2000, 3000, 4000};
-const uint8_t hues[4] = {16, 192, 48, 96};
+const uint8_t hues[4] = {20, 200, 54, 100};
 const int frontSize = 1;
 const int maxTailLength = 8;
 
@@ -113,26 +114,29 @@ void loop()
     angularVelocity *= 0.2;
   }
 
-  // Calculate RPM
-  float rpm = (angularVelocity * 60) / TWO_PI;
+  // // **Nieuwe RPM-berekening**
+  // float rpm = abs(angularVelocity) * (60.0 / TWO_PI); // Omega → RPM
+  // float logVelocity = log2(rpm / 30.0) + 3.0;         // Log-schaal voor octaven
+  // int mappedVelocity = constrain((logVelocity / 10.0) * 4045, 0, 4045); // Schalen naar DAC
 
-  int mappedVelocity = map(abs(angularVelocity), 0, 45, 0, 4045);
+  // **Nieuwe RPM-berekening**
+  float rpm = abs(angularVelocity) * (60.0 / TWO_PI);             // Omega → RPM
+  float logVelocity = log2(rpm / 30.0) + 3.0;                     // Log-schaal voor octaven
+  float scaledVelocity = (logVelocity / 10.0) * 4045.0;           // Schalen naar DAC
+  int mappedVelocity = constrain(round(scaledVelocity), 0, 4045); // Round and constrain
+
+  // **DAC-uitgangen**
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
-
   mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
   segmentIndex = (int)(currentAngle / (TWO_PI / 4));
   mcp.setChannelValue(MCP4728_CHANNEL_C, segments[segmentIndex]);
-
   mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
 
+  // **Min/max tracking**
   if (angularVelocity > minMaxVelocity[1])
-  {
     minMaxVelocity[1] = angularVelocity;
-  }
   if (angularVelocity < minMaxVelocity[0])
-  {
     minMaxVelocity[0] = angularVelocity;
-  }
 
   updateLEDs();
   FastLED.show();
@@ -151,11 +155,14 @@ void updateRing(int startIndex, int numLeds)
 {
   int currentLed = (int)((currentAngle / TWO_PI) * numLeds) % numLeds;
 
+  // Determine the hue adjustment based on the direction
+  int hueAdjustment = (angularVelocity > 0) ? 12 : -12;
+
   // Set front LEDs
   for (int i = 0; i < frontSize; i++)
   {
     int frontLed = (currentLed - i + numLeds) % numLeds;
-    leds[startIndex + frontLed] = CHSV(hues[segmentIndex], 255, 255);
+    leds[startIndex + frontLed] = CHSV(hues[segmentIndex] + hueAdjustment, 255, 255);
   }
 
   // Set tail LEDs
@@ -179,7 +186,7 @@ void updateRing(int startIndex, int numLeds)
       uint8_t tailBrightness = 180 * (tailLength - i + 1) / tailLength;
       if (tailLed != currentLed)
       {
-        leds[startIndex + tailLed] = CHSV(hues[segmentIndex], 255, tailBrightness);
+        leds[startIndex + tailLed] = CHSV(hues[segmentIndex] + hueAdjustment, 255, tailBrightness);
       }
     }
   }
@@ -211,18 +218,18 @@ void updateDisplay()
     display.print(F("Seg: "));
     display.println(segmentIndex);
 
-    display.print(F("RPM: "));
-    display.println((angularVelocity * 60) / TWO_PI, 2);
-    display.print(F("SPR: "));
-    float spr = 1 / (angularVelocity / TWO_PI);
-    if (spr >= 10 || spr <= -10)
-    {
-      display.print(F("INF"));
-    }
-    else
-    {
-      display.println(spr, 2);
-    }
+    // display.print(F("RPM: "));
+    // display.println((angularVelocity * 60) / TWO_PI, 2);
+    // display.print(F("SPR: "));
+    // float spr = 1 / (angularVelocity / TWO_PI);
+    // if (spr >= 10 || spr <= -10)
+    // {
+    //   display.print(F("INF"));
+    // }
+    // else
+    // {
+    //   display.println(spr, 2);
+    // }
 
     display.display();
 
