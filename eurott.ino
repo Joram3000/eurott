@@ -95,6 +95,8 @@ void loop()
   float targetAngleRad = (rawAngle / 4096.0) * TWO_PI;
   float angleDiff = targetAngleRad - currentAngle;
 
+  segmentIndex = (int)(currentAngle / (TWO_PI / 4));
+
   if (abs(angleDiff) > PI)
   {
     angleDiff += (angleDiff > 0) ? -TWO_PI : TWO_PI;
@@ -114,11 +116,6 @@ void loop()
     angularVelocity *= 0.2;
   }
 
-  // // **Nieuwe RPM-berekening**
-  // float rpm = abs(angularVelocity) * (60.0 / TWO_PI); // Omega → RPM
-  // float logVelocity = log2(rpm / 30.0) + 3.0;         // Log-schaal voor octaven
-  // int mappedVelocity = constrain((logVelocity / 10.0) * 4045, 0, 4045); // Schalen naar DAC
-
   // **Nieuwe RPM-berekening**
   float rpm = abs(angularVelocity) * (60.0 / TWO_PI);             // Omega → RPM
   float logVelocity = log2(rpm / 30.0) + 3.0;                     // Log-schaal voor octaven
@@ -128,7 +125,6 @@ void loop()
   // **DAC-uitgangen**
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
   mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
-  segmentIndex = (int)(currentAngle / (TWO_PI / 4));
   mcp.setChannelValue(MCP4728_CHANNEL_C, segments[segmentIndex]);
   mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
 
@@ -217,19 +213,6 @@ void updateDisplay()
 
     display.print(F("Seg: "));
     display.println(segmentIndex);
-
-    // display.print(F("RPM: "));
-    // display.println((angularVelocity * 60) / TWO_PI, 2);
-    // display.print(F("SPR: "));
-    // float spr = 1 / (angularVelocity / TWO_PI);
-    // if (spr >= 10 || spr <= -10)
-    // {
-    //   display.print(F("INF"));
-    // }
-    // else
-    // {
-    //   display.println(spr, 2);
-    // }
 
     display.display();
 
