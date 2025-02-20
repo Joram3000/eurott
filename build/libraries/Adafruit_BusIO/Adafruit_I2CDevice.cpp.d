@@ -1,8 +1,8 @@
 /Users/joram/Documents/Arduino/eurott/eurott/build/libraries/Adafruit_BusIO/Adafruit_I2CDevice.cpp.o: \
  /Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_I2CDevice.cpp \
  /Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/Adafruit_I2CDevice.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Arduino.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp_arduino_version.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Arduino.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp_arduino_version.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/config/include/freertos/FreeRTOSConfig.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/config/xtensa/include/freertos/FreeRTOSConfig_arch.h \
@@ -69,57 +69,57 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/FreeRTOS-Kernel/include/freertos/stream_buffer.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/FreeRTOS-Kernel/include/freertos/event_groups.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/FreeRTOS-Kernel/include/freertos/timers.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp8266-compat.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp8266-compat.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/gpio_reg.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/stdlib_noniso.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/binary.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/extra_attr.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/variants/doitESP32devkitV1/pins_arduino.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/io_pin_remap.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Arduino.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/stdlib_noniso.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/binary.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/extra_attr.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/variants/doitESP32devkitV1/pins_arduino.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/io_pin_remap.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Arduino.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_hw_support/include/esp_sleep.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/touch_sensor_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/gpio_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/gpio_num.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-log.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-log.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_rom/include/esp32/rom/ets_sys.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/log/include/esp_log.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/log/include/esp_log_internal.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-matrix.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-matrix.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/gpio_sig_map.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-uart.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-uart.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/uart_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/clk_tree_defs.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-gpio.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_driver_gpio/include/driver/gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_rom/include/esp_rom_gpio.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/gpio_pins.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_driver_gpio/include/driver/gpio_etm.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-touch.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-touch-ng.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-dac.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-adc.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-spi.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-i2c.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-ledc.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-touch.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-touch-ng.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-dac.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-adc.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-spi.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-i2c.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-ledc.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/ledc_types.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-rmt.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-sigmadelta.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-timer.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-rmt.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-sigmadelta.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-timer.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_driver_gptimer/include/driver/gptimer_types.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/timer_types.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-bt.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-psram.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-rgb-led.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-cpu.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/WCharacter.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/WString.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/pgmspace.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Stream.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Print.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Printable.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/IPAddress.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-bt.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-psram.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-rgb-led.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-cpu.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/WCharacter.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/WString.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/pgmspace.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Stream.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Print.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Printable.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/IPAddress.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/ip_addr.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/opt.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/port/include/lwipopts.h \
@@ -140,18 +140,18 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/def.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/ip6_zone.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_netif/include/esp_netif_ip_addr.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Client.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Server.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Udp.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/HardwareSerial.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/HWCDC.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/USBCDC.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Esp.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Client.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Server.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Udp.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/HardwareSerial.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/HWCDC.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/USBCDC.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Esp.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_partition/include/esp_partition.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_hw_support/include/hal/cpu_hal.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_hw_support/include/hal/cpu_ll.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/freertos_stats.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/libraries/Wire/src/Wire.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-log.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/HardwareI2C.h
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/freertos_stats.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/libraries/Wire/src/Wire.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-log.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/HardwareI2C.h

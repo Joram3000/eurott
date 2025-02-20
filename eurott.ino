@@ -11,7 +11,6 @@ Adafruit_MCP4728 mcp;
 
 // AS5600 setup
 AS5600 as5600;
-#define ANALOG_PIN 34
 
 // LED setup
 #define LED_PIN 13 // LED data pin
@@ -46,6 +45,14 @@ const int segments[4] = {1000, 2000, 3000, 4000};
 const uint8_t hues[4] = {20, 200, 54, 100};
 const int frontSize = 1;
 const int maxTailLength = 8;
+
+// Multiplexer setup
+#define MUX_A 18
+#define MUX_B 19
+#define MUX_C 23
+#define MUX_INPUT 34
+int potValues[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+//
 
 void setup()
 {
@@ -82,6 +89,12 @@ void setup()
       delay(10);
     }
   }
+
+  // Initialize multiplexer control pins
+  pinMode(MUX_A, OUTPUT);
+  pinMode(MUX_B, OUTPUT);
+  pinMode(MUX_C, OUTPUT);
+  pinMode(MUX_INPUT, INPUT);
 }
 
 void loop()
@@ -117,8 +130,12 @@ void loop()
   }
 
   // **Nieuwe RPM-berekening**
-  float rpm = abs(angularVelocity) * (60.0 / TWO_PI);             // Omega → RPM
-  float logVelocity = log2(rpm / 30.0) + 3.0;                     // Log-schaal voor octaven
+  float rpm = abs(angularVelocity) * (60.0 / TWO_PI); // Omega → RPM
+  // 1 = 30 RPM, 2 = 60 RPM, 3 = 120 RPM, 4 = 240 RPM, 5 = 480 RPM
+  // 2 = 33.3 RPM, 3 = 66.6 RPM, 4 = 133.3 RPM, 5 = 266.6 RPM, 6 = 533.3 RPM
+  // 3 = offset 1, 4 = offset 2, 5 = offset 3, 6 = offset 4, 7 = offset 5
+  //
+  float logVelocity = log2(rpm / 33.3) + 3.0;                     // Log-schaal voor octaven
   float scaledVelocity = (logVelocity / 10.0) * 4045.0;           // Schalen naar DAC
   int mappedVelocity = constrain(round(scaledVelocity), 0, 4045); // Round and constrain
 
@@ -133,6 +150,11 @@ void loop()
     minMaxVelocity[1] = angularVelocity;
   if (angularVelocity < minMaxVelocity[0])
     minMaxVelocity[0] = angularVelocity;
+
+  // Read one MUX value per cycle
+  static int currentMuxChannel = 0;
+  potValues[currentMuxChannel] = readMux(currentMuxChannel);
+  currentMuxChannel = (currentMuxChannel + 1) % 8;
 
   updateLEDs();
   FastLED.show();
@@ -214,10 +236,27 @@ void updateDisplay()
     display.print(F("Seg: "));
     display.println(segmentIndex);
 
+    display.print(F("["));
+    for (int i = 0; i < 8; i++)
+    {
+      display.print(potValues[i].map(0, 4095, 0, 31));
+      if (i < 7)
+        display.print(F(","));
+    }
+    display.println(F("]"));
+
     display.display();
 
     lastVelocity = angularVelocity;
     lastRawAngle = as5600.rawAngle();
     lastSegmentIndex = segmentIndex;
   }
+}
+
+int readMux(int channel)
+{
+  digitalWrite(MUX_A, channel & 1);
+  digitalWrite(MUX_B, (channel >> 1) & 1);
+  digitalWrite(MUX_C, (channel >> 2) & 1);
+  return analogRead(MUX_INPUT);
 }

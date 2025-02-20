@@ -1,5 +1,5 @@
 /Users/joram/Documents/Arduino/eurott/eurott/build/core/esp32-hal-i2c-slave.c.o: \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-i2c-slave.c \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-i2c-slave.c \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/soc/esp32/include/soc/soc_caps.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/dio_qspi/include/sdkconfig.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_common/include/esp_attr.h \
@@ -91,10 +91,10 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/include/hal/hal_utils.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/platform_port/include/hal/assert.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/hal/esp32/include/hal/clk_gate_ll.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-log.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-log.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_rom/include/esp32/rom/ets_sys.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/log/include/esp_log.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/log/include/esp_log_internal.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-i2c-slave.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/esp32-hal-periman.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-i2c-slave.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/esp32-hal-periman.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_hw_support/include/esp_private/periph_ctrl.h

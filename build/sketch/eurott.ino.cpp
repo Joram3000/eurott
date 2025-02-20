@@ -13,7 +13,6 @@ Adafruit_MCP4728 mcp;
 
 // AS5600 setup
 AS5600 as5600;
-#define ANALOG_PIN 34
 
 // LED setup
 #define LED_PIN 13 // LED data pin
@@ -49,17 +48,27 @@ const uint8_t hues[4] = {20, 200, 54, 100};
 const int frontSize = 1;
 const int maxTailLength = 8;
 
-#line 50 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+// Multiplexer setup
+#define MUX_A 18
+#define MUX_B 19
+#define MUX_C 23
+#define MUX_INPUT 34
+int potValues[8] = {0, 0, 0, 0, 0, 0, 0, 0};
+//
+
+#line 57 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup();
-#line 87 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 100 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void loop();
-#line 146 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 160 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateLEDs();
-#line 154 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 168 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateRing(int startIndex, int numLeds);
-#line 195 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 209 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void updateDisplay();
-#line 50 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+#line 251 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
+int readMux(int channel);
+#line 57 "/Users/joram/Documents/Arduino/eurott/eurott/eurott.ino"
 void setup()
 {
   Serial.begin(115200);
@@ -95,6 +104,12 @@ void setup()
       delay(10);
     }
   }
+
+  // Initialize multiplexer control pins
+  pinMode(MUX_A, OUTPUT);
+  pinMode(MUX_B, OUTPUT);
+  pinMode(MUX_C, OUTPUT);
+  pinMode(MUX_INPUT, INPUT);
 }
 
 void loop()
@@ -107,6 +122,8 @@ void loop()
   float rawAngle = as5600.rawAngle();
   float targetAngleRad = (rawAngle / 4096.0) * TWO_PI;
   float angleDiff = targetAngleRad - currentAngle;
+
+  segmentIndex = (int)(currentAngle / (TWO_PI / 4));
 
   if (abs(angleDiff) > PI)
   {
@@ -127,21 +144,15 @@ void loop()
     angularVelocity *= 0.2;
   }
 
-  // // **Nieuwe RPM-berekening**
-  // float rpm = abs(angularVelocity) * (60.0 / TWO_PI); // Omega → RPM
-  // float logVelocity = log2(rpm / 30.0) + 3.0;         // Log-schaal voor octaven
-  // int mappedVelocity = constrain((logVelocity / 10.0) * 4045, 0, 4045); // Schalen naar DAC
-
   // **Nieuwe RPM-berekening**
   float rpm = abs(angularVelocity) * (60.0 / TWO_PI);             // Omega → RPM
-  float logVelocity = log2(rpm / 30.0) + 2.0;                     // Log-schaal voor octaven
+  float logVelocity = log2(rpm / 30.0) + 3.0;                     // Log-schaal voor octaven
   float scaledVelocity = (logVelocity / 10.0) * 4045.0;           // Schalen naar DAC
   int mappedVelocity = constrain(round(scaledVelocity), 0, 4045); // Round and constrain
 
   // **DAC-uitgangen**
   mcp.setChannelValue(MCP4728_CHANNEL_A, mappedVelocity);
   mcp.setChannelValue(MCP4728_CHANNEL_B, rawAngle);
-  segmentIndex = (int)(currentAngle / (TWO_PI / 4));
   mcp.setChannelValue(MCP4728_CHANNEL_C, segments[segmentIndex]);
   mcp.setChannelValue(MCP4728_CHANNEL_D, rawAngle);
 
@@ -150,6 +161,11 @@ void loop()
     minMaxVelocity[1] = angularVelocity;
   if (angularVelocity < minMaxVelocity[0])
     minMaxVelocity[0] = angularVelocity;
+
+  // Read one MUX value per cycle
+  static int currentMuxChannel = 0;
+  potValues[currentMuxChannel] = readMux(currentMuxChannel);
+  currentMuxChannel = (currentMuxChannel + 1) % 8;
 
   updateLEDs();
   FastLED.show();
@@ -211,53 +227,46 @@ void updateDisplay()
   static float lastRawAngle = 0;
   static int lastSegmentIndex = -1;
 
-  if (true)
+  if (abs(angularVelocity - lastVelocity) > 0.01 || as5600.rawAngle() != lastRawAngle || segmentIndex != lastSegmentIndex)
   {
-    // Display the graph
     display.clearDisplay();
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
 
-    // Draw the graph
-    float rpm = abs(angularVelocity) * (60.0 / TWO_PI);             // Omega → RPM
-    float logVelocity = log2(rpm / 30.0) + 2.0;                     // Log-schaal voor octaven
-    float scaledVelocity = (logVelocity / 10.0) * 4045.0;           // Schalen naar DAC
-    int mappedVelocity = constrain(round(scaledVelocity), 0, 4045); // Round and constrain
+    display.setCursor(0, 0);
+    display.print(F("Velo: "));
+    display.println(angularVelocity, 2);
+    display.print(F("Max:"));
+    display.print(minMaxVelocity[1], 1);
+    display.print(F(" Min: "));
+    display.println(minMaxVelocity[0], 1);
 
-    // Draw the graph (example)
-    int graphHeight = map(mappedVelocity, 0, 4045, 0, SCREEN_HEIGHT);
-    display.fillRect(0, SCREEN_HEIGHT - graphHeight, SCREEN_WIDTH, graphHeight, SSD1306_WHITE);
+    display.print(F("Raw: "));
+    display.println(as5600.rawAngle());
+
+    display.print(F("Seg: "));
+    display.println(segmentIndex);
+
+    display.print(F("[: "));
+    for (int i = 0; i < 8; i++)
+    {
+      display.print(potValues[i]);
+      display.print(F(" "));
+    }
+    display.println(F("]"));
 
     display.display();
+
+    lastVelocity = angularVelocity;
+    lastRawAngle = as5600.rawAngle();
+    lastSegmentIndex = segmentIndex;
   }
-  else
-  {
-    // Display the current numbers
-    if (abs(angularVelocity - lastVelocity) > 0.01 || as5600.rawAngle() != lastRawAngle || segmentIndex != lastSegmentIndex)
-    {
-      display.clearDisplay();
-      display.setTextSize(1);
-      display.setTextColor(SSD1306_WHITE);
+}
 
-      display.setCursor(0, 0);
-      display.print(F("Velo: "));
-      display.println(angularVelocity, 2);
-      display.print(F("Max:"));
-      display.print(minMaxVelocity[1], 1);
-      display.print(F(" Min: "));
-      display.println(minMaxVelocity[0], 1);
-
-      display.print(F("Raw: "));
-      display.println(as5600.rawAngle());
-
-      display.print(F("Seg: "));
-      display.println(segmentIndex);
-
-      display.display();
-
-      lastVelocity = angularVelocity;
-      lastRawAngle = as5600.rawAngle();
-      lastSegmentIndex = segmentIndex;
-    }
-  }
+int readMux(int channel)
+{
+  digitalWrite(MUX_A, channel & 1);
+  digitalWrite(MUX_B, (channel >> 1) & 1);
+  digitalWrite(MUX_C, (channel >> 2) & 1);
+  return analogRead(MUX_INPUT);
 }

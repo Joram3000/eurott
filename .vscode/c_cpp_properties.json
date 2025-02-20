@@ -3,14 +3,14 @@
     {
       "name": "Arduino",
       "includePath": [
-        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/**",
-        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/variants/doitESP32devkitV1/**",
+        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/**",
+        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/variants/doitESP32devkitV1/**",
         "/Users/joram/Documents/Arduino/libraries/AS5600/**",
-        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/libraries/Wire/src/**",
+        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/libraries/Wire/src/**",
         "/Users/joram/Documents/Arduino/libraries/FastLED/src/**",
         "/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library/**",
         "/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO/**",
-        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/libraries/SPI/src/**",
+        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/libraries/SPI/src/**",
         "/Users/joram/Documents/Arduino/libraries/Adafruit_SSD1306/**",
         "/Users/joram/Documents/Arduino/libraries/Adafruit_MCP4728/**",
         "/Users/joram/Documents/Arduino/libraries/**",
@@ -18,7 +18,7 @@
         "/Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/**"
       ],
       "forcedInclude": [
-        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Arduino.h"
+        "/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Arduino.h"
       ],
       "compilerPath": "/Users/joram/Library/Arduino15/packages/esp32/tools/esp-x32/2405/bin/xtensa-esp32-elf-g++",
       "compilerArgs": [
@@ -47,14 +47,14 @@
         "/Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/",
         "@/Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/flags/includes",
         "-I/Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/dio_qspi/include",
-        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32",
-        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/variants/doitESP32devkitV1",
+        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32",
+        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/variants/doitESP32devkitV1",
         "-I/Users/joram/Documents/Arduino/libraries/AS5600",
-        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/libraries/Wire/src",
+        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/libraries/Wire/src",
         "-I/Users/joram/Documents/Arduino/libraries/FastLED/src",
         "-I/Users/joram/Documents/Arduino/libraries/Adafruit_GFX_Library",
         "-I/Users/joram/Documents/Arduino/libraries/Adafruit_BusIO",
-        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/libraries/SPI/src",
+        "-I/Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/libraries/SPI/src",
         "-I/Users/joram/Documents/Arduino/libraries/Adafruit_SSD1306",
         "-I/Users/joram/Documents/Arduino/libraries/Adafruit_MCP4728",
         "@/Users/joram/Documents/Arduino/eurott/eurott/build/build_opt.h",

@@ -1,9 +1,9 @@
 /Users/joram/Documents/Arduino/eurott/eurott/build/core/IPAddress.cpp.o: \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/IPAddress.cpp \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/IPAddress.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Printable.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/WString.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/pgmspace.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/IPAddress.cpp \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/IPAddress.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Printable.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/WString.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/pgmspace.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/ip_addr.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/opt.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/port/include/lwipopts.h \
@@ -90,7 +90,7 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/def.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/ip6_zone.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/esp_netif/include/esp_netif_ip_addr.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Print.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Print.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/netif.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/err.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/pbuf.h \
@@ -100,5 +100,5 @@
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/priv/memp_std.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/priv/memp_priv.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/lwip/lwip/src/include/lwip/priv/mem_priv.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/StreamString.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Stream.h
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/StreamString.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Stream.h

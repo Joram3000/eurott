@@ -1,10 +1,10 @@
 /Users/joram/Documents/Arduino/eurott/eurott/build/core/freertos_stats.cpp.o: \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/freertos_stats.cpp \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/freertos_stats.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Print.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/WString.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/pgmspace.h \
- /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.2/cores/esp32/Printable.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/freertos_stats.cpp \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/freertos_stats.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Print.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/WString.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/pgmspace.h \
+ /Users/joram/Library/Arduino15/packages/esp32/hardware/esp32/3.1.3/cores/esp32/Printable.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/FreeRTOS-Kernel/include/freertos/FreeRTOS.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/config/include/freertos/FreeRTOSConfig.h \
  /Users/joram/Library/Arduino15/packages/esp32/tools/esp32-arduino-libs/idf-release_v5.3-489d7a2b-v1/esp32/include/freertos/config/xtensa/include/freertos/FreeRTOSConfig_arch.h \
