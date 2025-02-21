@@ -6,10 +6,7 @@
 #include <Adafruit_MCP4728.h>
 #include <cmath>
 
-// MCP4728 setup
 Adafruit_MCP4728 mcp;
-
-// AS5600 setup
 AS5600 as5600;
 
 // LED setup
@@ -52,7 +49,6 @@ const int maxTailLength = 8;
 #define MUX_C 23
 #define MUX_INPUT 34
 int potValues[8] = {0, 0, 0, 0, 0, 0, 0, 0};
-//
 
 void setup()
 {
@@ -135,7 +131,7 @@ void loop()
   // 2 = 33.3 RPM, 3 = 66.6 RPM, 4 = 133.3 RPM, 5 = 266.6 RPM, 6 = 533.3 RPM
   // 3 = offset 1, 4 = offset 2, 5 = offset 3, 6 = offset 4, 7 = offset 5
   //
-  float logVelocity = log2(rpm / 33.3) + 3.0;                     // Log-schaal voor octaven
+  float logVelocity = log2(rpm / 30) + 3.0;                       // Log-schaal voor octaven
   float scaledVelocity = (logVelocity / 10.0) * 4045.0;           // Schalen naar DAC
   int mappedVelocity = constrain(round(scaledVelocity), 0, 4045); // Round and constrain
 
@@ -151,7 +147,7 @@ void loop()
   if (angularVelocity < minMaxVelocity[0])
     minMaxVelocity[0] = angularVelocity;
 
-  // Read one MUX value per cycle
+  // // Read one MUX value per cycle
   static int currentMuxChannel = 0;
   potValues[currentMuxChannel] = readMux(currentMuxChannel);
   currentMuxChannel = (currentMuxChannel + 1) % 8;
@@ -237,9 +233,10 @@ void updateDisplay()
     display.println(segmentIndex);
 
     display.print(F("["));
+
     for (int i = 0; i < 8; i++)
     {
-      display.print(potValues[i].map(0, 4095, 0, 31));
+      display.print(map(potValues[i], 0, 4095, 0, 31));
       if (i < 7)
         display.print(F(","));
     }
